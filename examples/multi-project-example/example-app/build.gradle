@@ -1,0 +1,10 @@
+evaluationDependsOn(':example-lib')
+
+apply plugin: 'com.linkedin.python-cli'
+
+dependencies {
+
+    python project(':example-lib')
+
+    test 'pypi:mock:2.0.0'
+}

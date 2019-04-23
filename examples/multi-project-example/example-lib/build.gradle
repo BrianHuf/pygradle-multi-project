@@ -1,0 +1,5 @@
+apply plugin: 'com.linkedin.python-sdist'
+
+dependencies {
+    test 'pypi:mock:2.0.0'
+}

@@ -1,0 +1,29 @@
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies{
+        classpath "gradle.plugin.com.linkedin.pygradle:pygradle-plugin:0.9.11"
+    }
+}
+
+subprojects {
+    project.apply plugin: "com.linkedin.python"
+
+    version '0.3.0a1'
+
+    repositories {
+        pyGradlePyPi()
+    }
+
+    python {
+        forceVersion('pypi', 'flake8', '3.2.1') // fix for Python36 enum34 issue https://github.com/linkedin/pygradle/issues/268
+        forceVersion('pypi', 'pbr', '5.1.1') // fix for bad pbr version https://github.com/linkedin/pygradle/issues/246
+    }
+
+    dependencies {
+        setupRequires 'pypi:pbr:5.1.1' // fix for bad pbr version https://github.com/linkedin/pygradle/issues/246
+    }
+}
